@@ -2,6 +2,7 @@
 
 const express = require('express');
 const app = express();
+require('dotenv').config();
 
 let date = new Date();
 let isoDate = date.toISOString();
@@ -14,4 +15,7 @@ app.get('/time', (req, res) => {
 	res.send(isoDate);
 });
 
-app.listen(3000);
+let port = process.env.PORT || 1337
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
